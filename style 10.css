@@ -1,0 +1,112 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #dba8a8; /* Light pink background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login Form Container */
+.login-container {
+  background-color: #f5dcdc; /* Lighter pink for the form box */
+  padding: 60px; /* Larger padding for spacious design */
+  border-radius: 25px; /* Rounded corners */
+  border: 1px solid #8c7373; /* Soft border */
+  width: 500px; /* Fixed width for consistency */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Form Styling */
+.login-form {
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input Fields */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #8c7373;
+  box-shadow: 0 0 5px rgba(140, 115, 115, 0.5);
+}
+
+/* Checkbox and Forgot Password */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.forgot-password {
+  color: #333;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #6a390f; /* Bright green button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #9c5e1c;
+}
+
+/* Sign-Up Link */
+.signup-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}

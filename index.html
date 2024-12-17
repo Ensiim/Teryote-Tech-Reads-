@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teryote</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/lux/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="p/Teryote__1_-removebg-preview.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4efe6;
+            color: #4e4b47;
+            overflow-x: hidden;
+        }
+        body::-webkit-scrollbar {
+    display: none; 
+}
+
+        .navbar {
+            background-color: #4e3629;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-size: 18px;
+            margin-right: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffc107;
+            transform: translateY(-3px);
+        }
+
+        .navbar-nav .nav-item .dropdown-menu {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            position: absolute;
+            z-index: 9999;
+            color: #333;
+        }
+
+        .navbar-nav .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navbar-nav .nav-item .dropdown-item {
+            color: #333;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .dropdown-item:hover {
+            background-color: #ffc107;
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-item .dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .dropdown-menu a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav .dropdown-menu {
+                position: relative;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .offcanvas-header {
+            background-color: #4e3629;
+            color: #fff;
+        }
+
+        .offcanvas-body {
+            background-color: #f8f1e1;
+            padding: 0;
+        }
+
+        .offcanvas-nav {
+            padding: 10px 0;
+        }
+
+        .offcanvas-nav .nav-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .offcanvas-nav .nav-link {
+            color: #4e3629;
+            padding: 15px 20px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .offcanvas-nav .nav-link:hover {
+            background-color: #ffc107;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 48px;
+            color: #4e3629;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .responsive-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .btn-custom {
+            min-width: 150px;
+            border-radius: 20px;
+            padding: 10px 20px;
+            transition: transform 0.3s ease, background-color 0.3s;
+            font-size: 20px;
+        }
+
+        .btn-primary {
+            background-color: #8c4b36;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #60402d;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background-color: #d1a171;
+        }
+
+        .btn-secondary:hover {
+            background-color: #a88155;
+            transform: scale(1.05);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: rgb(0, 0, 0);
+            margin: 40px 0;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 90vw;
+        }
+
+        .gallery-panel {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            border-radius: 15px;
+            color: #fff;
+            text-shadow: 0px 2px 4px #000;
+            cursor: pointer;
+            flex: 0 1 30%;
+            margin: 10px;
+            position: relative;
+            transition: flex 0.3s ease-in, transform 0.3s ease;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-panel h3 {
+            font-size: 24px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .gallery-panel.active h3 {
+            opacity: 1;
+        }
+
+        .purpose-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #e3d1c5;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .purpose-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #4e3629;
+            margin-bottom: 15px;
+        }
+
+        .purpose-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #4e4b47;
+            font-weight: 500;
+        }
+
+        .purpose-container:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease-in-out;
+        }
+
+
+        footer {
+            background-color: #f4efe6;
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+        .footer-distributed .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-distributed .row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .footer-left,
+        .footer-center,
+        .footer-right {
+            flex: 1;
+            margin: 10px;
+            min-width: 250px;
+        }
+
+        .footer-left h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #f7c045;
+        }
+
+        .footer-left p {
+            line-height: 1.6;
+            color: #000000da;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #f7c045;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+        }
+
+        .footer-center h4,
+        .footer-right h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #f7c045;
+        }
+
+        .footer-center p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .footer-center p i {
+            margin-right: 10px;
+            color: #f7c045;
+        }
+
+        .footer-right .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-right .footer-links ul li {
+            margin: 5px 0;
+        }
+
+        .footer-right .footer-links ul li a {
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-right .footer-links ul li a:hover {
+            color: #f7c045;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .footer-bottom i {
+            margin: 0 5px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in:not(.visible) {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        @keyframes moveRight {
+            to {
+                transform: translateX(100px);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .footer-left,
+            .footer-center,
+            .footer-right {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-form input,
+            .subscribe-form button {
+                width: 100%;
+                border-radius: 3px;
+                margin: 5px 0;
+            }
+        }
+
+        .navbar {
+            animation: fadeInBackground 2s ease-in-out;
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .navbar-nav .nav-item {
+            opacity: 0;
+            animation: fadeInDrop 1s ease forwards;
+        }
+
+        .navbar-nav .nav-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .navbar-nav .nav-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .navbar-nav .nav-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .navbar-nav .nav-item:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .navbar-brand img {
+            opacity: 0;
+            animation: dropLogo 1s ease forwards;
+            animation-delay: 0.7s;
+        }
+
+        @keyframes fadeInDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dropLogo {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .offcanvas.offcanvas-start {
+            animation: slideInLeft 0.5s ease forwards;
+        }
+
+        .offcanvas.offcanvas-start:not(.show) {
+            animation: slideOutLeft 0.5s ease forwards;
+        }
+
+        .navbar-toggler:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-toggler {
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .offcanvas-title {
+            color: #ffffff;
+        }
+
+        #policyModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #f4efe6;
+            border: 2px solid #a07a50;
+            border-radius: 10px;
+            padding: 25px;
+            width: 90%;
+            max-width: 450px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+        .modal-header {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #5d3d23;
+            margin-left: 40px;
+        }
+        .modal-body {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #704d2a;
+            margin-bottom: 20px;
+        }
+
+        .modal-body a {
+            color: #a07a50;
+            text-decoration: underline;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #704d2a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            background-color: #5d3d23;
+        }
+
+        .modal-btn.secondary {
+            background-color: #a07a50;
+        }
+
+        .modal-btn.secondary:hover {
+            background-color: #8a6442;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark animated-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand logo animated-logo" href="index.html">
+                <img src="p/Teryote__1_-removebg-preview.png" alt="Teryote Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"
+                aria-controls="offcanvasNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto animated-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contentDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-folder"></i> Content</a>
+                        <ul class="dropdown-menu" aria-labelledby="contentDropdown">
+                            <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report
+                                    Bug</a></li>
+                            <li><a class="dropdown-item" href="references 3.html"><i class="fas fa-info-circle"></i>
+                                    References</a></li>
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            </li>
+                            <li><a class="dropdown-item" href="Signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html"><i class="fas fa-users"></i> About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="libery.html"><i class="fas fa-book"></i> Library</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavLabel">Teryote</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column offcanvas-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasContentDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-folder"></i> Content</a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasContentDropdown">
+                        <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report Bug</a>
+                        </li>
+                        <li><a class="dropdown-item" href="references 3.html"><i class="fas fa-info-circle"></i>
+                                References
+                            </a></li>
+                        <li><a class="dropdown-item" href="mobile.html"><i class="fas fa-ellipsis-h"></i> More</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html"><i class="fas fa-users"></i> About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="libery.html"><i class="fas fa-book"></i> Library</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="policyModal">
+        <div class="modal-content">
+            <div class="modal-header">Privacy & Policy Agreement</div>
+            <div class="modal-body">
+                Welcome to our website! By continuing to browse, you agree to our <a href="polichy.html">Privacy Policy</a> and <a
+                    href="team of services.html">Terms of Service</a>.
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" id="acceptBtn">Accept</button>
+                <button class="modal-btn secondary" id="declineBtn">Decline</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row align-items-center fade-in" id="welcomeSection">
+            <div class="col-md-6 text-center text-md-start">
+                <h1>Welcome to Teryote</h1>
+                <p class="purpose-text" style="text-align: center;">The Teryote Library is dedicated to providing a vast
+                    collection of resources to help you on your knowledge journey.</p>
+                <div class="btn-container">
+                    <a href="libery.html" class="btn btn-primary btn-custom">Get Started</a>
+                    <a href="aboutus.html" class="btn btn-secondary btn-custom">Learn More</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="img-container">
+                    <img src="p/b41.png" class="responsive-img" alt="Stack of Books">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center fade-in" id="exploreSection">
+            <div class="col-md-6 text-center">
+                <div class="img-container">
+                    <img src="p/Untitled design (1).png" class="responsive-img" alt="Reading Books">
+                </div>
+            </div>
+            <div class="col-md-6 text-start">
+                <h1>Explore Our Library</h1>
+                <p class="mt-3" style="font-size: 18px; color: #4a5568; text-align: center;">Discover a wide range of
+                    books and resources to enhance your knowledge and skills. Join us in exploring our extensive library
+                    collection.</p>
+                <div class="btn-container">
+                    <a href="libery.html" class="btn btn -primary btn-custom">Browse Now</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h1><i class="fas fa-book-open fa"></i> Popular Books</h1>
+        <div class="gallery-container fade-in" id="popularBooks">
+            <div class="gallery-panel" style="background-image: url('p/python1.png');">
+                <a href="a/python2.pdf">
+                    <h3>Py</h3>
+                </a>
+            </div>
+            <div class="gallery-panel" style="background-image: url('p/j1.png');">
+                <a href="a/j1.pdf">
+                    <h3>Js</h3>
+                </a>
+            </div>
+            <div class="gallery-panel" style="background-image: url('p/html.png');">
+                <a href="a/html.pdf">
+                    <h3>HTML</h3>
+                </a>
+            </div>
+        </div>
+
+        <hr>
+        <div class="purpose-container fade-in" id="purpose">
+            <h2 class="purpose-title">Our Purpose</h2>
+            <p class="purpose-description">Our mission is to provide a user-friendly platform that connects individuals
+                to knowledge across diverse fields. Dive into a space built for curious learners and avid readers alike.
+            </p>
+        </div>
+
+    </div>
+    <footer class="footer-distributed">
+        <div class="container">
+            <div class="row">
+                <div class="footer-left">
+                    <h3>Teryote</h3>
+                    <p>
+                        Unlock a world of learning with Teryote. Discover, connect, and grow with us every day.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61553644373259" class="icon facebook"
+                            aria-label="Visit our Facebook" title="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/home" class="icon twitter" aria-label="Visit our Twitter"
+                            title="Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jaffajds/" class="icon instagram"
+                            aria-label="Visit our Instagram" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/feed/" class="icon linkedin" aria-label="Visit our LinkedIn"
+                            title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-center">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Myanmar </p>
+                    <p><i class="fas fa-phone-alt"></i> +95 9774171638</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@teryote.com">info@teryote.com</a></p>
+                </div>
+
+                <div class="footer-right">
+                    <h4>Useful Links</h4>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                            <li><a href="libery.html">Library</a></li>
+                            <li><a href="reportbug1.html">Report Bug</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"
+            style="background-color: #f4efe6; padding: 20px; text-align: center; font-size: 14px; color: #000; border-top: 1px solid #ccc;">
+            <p>© 2024 <strong>Teryote</strong>. All rights reserved.</p>
+            <p>
+                Content in this library is curated from various reputable sources.
+            </p>
+            <p>
+                <a href="aboutus.html" style="color: #6f4f28; text-decoration: none;">About Us</a> |
+                <a href="https://www.facebook.com/profile.php?id=61553644373259"
+                    style="color: #6f4f28; text-decoration: none;">Contact</a> |
+                <a href="team of services.html" style="color: #6f4f28; text-decoration: none;">Terms of Use</a>
+            </p>
+        </div>
+
+    </footer>
+
+    <script>
+        // Gallery Panel Interactions
+        // This part of the script makes the gallery panels interactive.
+        document.querySelectorAll('.gallery-panel').forEach(panel => {
+            // When the user hovers over the panel, it scales up and the heading fades in.
+            panel.addEventListener('mouseenter', () => {
+                panel.style.transform = 'scale(1.1)';
+                panel.querySelector('h3').style.opacity = '1';
+            });
+
+            // When the user moves their mouse away, the panel returns to its original size and the heading fades out.
+            panel.addEventListener('mouseleave', () => {
+                panel.style.transform = 'scale(1)';
+                panel.querySelector('h3').style.opacity = '0';
+            });
+
+            // When the user clicks on the panel, the background color changes temporarily.
+            panel.addEventListener('click', () => {
+                const originalColor = panel.style.backgroundColor;
+                panel.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+                // After 200ms, the background color returns to the original one.
+                setTimeout(() => panel.style.backgroundColor = originalColor, 200);
+            });
+        });
+        window.onload = function () {
+            if (!sessionStorage.getItem("policyAccepted")) {
+                document.getElementById("policyModal").style.display = "block";
+            }
+        };
+
+        document.getElementById("acceptBtn").addEventListener("click", function () {
+            sessionStorage.setItem("policyAccepted", "true");
+            document.getElementById("policyModal").style.display = "none";
+        });
+
+        document.getElementById("declineBtn").addEventListener("click", function () {
+            window.location.href = "#"; 
+        });
+
+
+        // Fade in Animation
+        // The following script applies a fade-in effect to elements when they come into the viewport.
+        document.addEventListener("DOMContentLoaded", () => {
+            // Select all elements with the class 'fade in'.
+            const fadeInElements = document.querySelectorAll('.fade-in');
+
+            // Function to check if elements are in view.
+            const checkVisibility = () => {
+                fadeInElements.forEach(element => {
+                    // If the element is in the viewport, make it visible.
+                    if (element.getBoundingClientRect().top < window.innerHeight && element.getBoundingClientRect().bottom >= 0) {
+                        element.classList.add('visible');
+                    } else {
+                        // If the element is out of view, remove the 'visible' class.
+                        element.classList.remove('visible');
+                    }
+                });
+            };
+
+            // Check visibility when the user scrolls.
+            window.addEventListener('scroll', checkVisibility);
+            // Initial check when the page is loaded.
+            checkVisibility();
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

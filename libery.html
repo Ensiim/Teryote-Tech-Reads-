@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="p/Teryote__1_-removebg-preview.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5DC;
+            color: #4e4b47;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('p/libery.jpg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
+            animation: fadeIn 1s ease-out;
+            padding: 0 20px;
+        }
+
+        h1 {
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            color: #ffffff;
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .button {
+            padding: 9px 40px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #8c4b36, #b56443);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 70px;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #937a6b, #8c4b36);
+            transform: scale(1.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            background-color: #F5F5DC;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 2000px;
+            margin-top: 0;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #4e4b47;
+            font-weight: 600;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav a:hover {
+            background-color: #d2b48c;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0. 2);
+            padding: 5px 10px;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 150px;
+            border-radius: 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            width: 200px;
+        }
+
+        .search-bar button {
+            background-color: #8c4b36;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #b56443;
+        }
+
+        .scroll-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+            width: 100%;
+            max-width: 2000px;
+            margin-top: 20px;
+            margin-left: 70px;
+        }
+
+        .box {
+            flex: 0 0 18%;
+            min-width: 150px;
+            min-height: 300px;
+            background-color: #4e4b47;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .box-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-container {
+                flex-direction: column;
+                align-items: center;
+                margin-left: 0;
+                gap: 10px;
+            }
+
+            .box {
+                width: 100%;
+                max-width: 300px;
+                min-width: unset;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .scroll-container {
+                gap: 15px;
+                justify-content: center;
+                margin-left: 20px;
+            }
+
+            .box {
+                flex: 0 0 30%;
+                max-width: 200px;
+                min-width: unset;
+            }
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: #4e4b47;
+        }
+
+        .no-results i {
+            font-size: 50px;
+            color: #b56443;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+            border: 1px solid #b56443;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background-color: #8c4b36;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .modal-body {
+            background-color: #f9f9f9;
+            color: #4e4b47;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .modal-footer {
+            background-color: #f1f1f1;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .btn-primary {
+            background-color: #b56443;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #937a6b;
+        }
+
+        .btn-secondary {
+            background-color: #d2b48c;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c2a77a;
+        }
+
+        .dropdown-menu {
+            background-color: #f5f5dc;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .dropdown-item {
+            color: #4e4b47;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #d2b48c;
+            color: white;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Programming Hub</h1>
+        <button class="button" onclick="window.location.href='index.html';">Home</button>
+    </div>
+    <nav class="nav">
+        <a href="#" onclick="filterBoxes('html')"><i class="fab fa-html5"></i> HTML</a>
+        <a href="#" onclick="filterBoxes('css')"><i class="fab fa-css3-alt"></i> CSS</a>
+        <a href="#" onclick="filterBoxes('js')">
+            <i class="fab fa-js"></i> JavaScript /
+            <i class="fab fa-java"></i> Java
+        </a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" id="helpDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i></i> More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="helpDropdown">
+                <a href="#" onclick="filterBoxes('bootstrap')"><i class="fab fa-bootstrap"></i> Bootstrap</a>
+                <a href="#" onclick="filterBoxes('python')"><i class="fab fa-python"></i> Python</a>
+                <a href="#" onclick="filterBoxes('php')"><i class="fab fa-php"></i> PHP</a>
+                <a href="#" onclick="filterBoxes('csharp')"><i class="fab fa-csharp"></i> C#</a>
+                <a href="#" onclick="filterBoxes('ruby')"><i class="fab fa-ruby"></i> Ruby</a>
+                <a href="#" onclick="filterBoxes('swift')"><i class="fab fa-swift"></i> Swift</a>
+                <a href="#" onclick="filterBoxes('go')"><i class="fab fa-golang"></i> Go</a>
+                <a href="#" onclick="filterBoxes('rust')"><i class="fab fa-rust"></i> Rust</a>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" id="helpDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fas fa-question-circle"></i> Help
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="helpDropdown">
+                <li><a class="dropdown-item" href="mobile.html"><i class="fas fa-mobile-alt"></i> Mobile Support</a>
+                </li>
+                <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report Bug</a></li>
+
+
+            </ul>
+        </div>
+        <a href="#" onclick="showAll()">Show All</a>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." aria-label="Search" id="searchInput">
+            <button onclick="searchFunction()"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+
+    <div class="scroll-container" id="boxContainer" style="display: flex; ">
+        <div class="box" data-category="html" data-name="About HTML"
+            data-summary="Discover the core concepts of HTML, the foundation of web development." data-pdf="a/html.pdf">
+            <a><img src="p/html.png" class="html-image box-img"></a>
+        </div>
+        <div class="box" data-category="html" data-name="CSS Essentials"
+            data-summary="Master the key principles of CSS to create visually appealing websites."
+            data-pdf="a/html1.pdf">
+            <a><img src="p/html1.png" class="html-image box-img"></a>
+        </div>
+        <div class="box" data-category="html" data-name="JavaScript Fundamentals"
+            data-summary="Dive into JavaScript to learn how to make web pages interactive." data-pdf="a/html2.pdf">
+            <a><img src="p/html2.png" class="html-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="How to write Java" data-summary="Learn how to use the Java."
+            data-pdf="#"><a><img src="p/jav1.jpg" class="html-image box-img"></a></div>
+        <div class="box" data-category="css" data-name="C plus"
+            data-summary="A beginner-friendly C plus guide covering syntax and practical use cases."
+            data-pdf="a/html4.pdf"><a><img src="p/c plus.jpg" class="html-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Python Basics"
+            data-summary="Start your journey into python programming." data-pdf="a/css.pdf">
+            <a><img src="p/pp3.jpg" class="css-image box-img"></a>
+        </div>
+        <div class="box" data-category="css" data-name="Advanced CSS"
+            data-summary="Take your CSS skills to the next level with advanced styling techniques."
+            data-pdf="a/css1.pdf">
+            <a><img src="p/css1.png" class="css-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="JavaScript Basics"
+            data-summary="Learn the essentials of JavaScript to start coding dynamic websites." data-pdf="a/j2.pdf">
+            <a><img src="p/j2.png" class="js-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="JavaScript Advanced"
+            data-summary="Explore advanced JavaScript features to build powerful web applications." data-pdf="a/j1.pdf">
+            <a><img src="p/j1.png" class="js-image box-img"></a>
+        </div>
+        <div class="box" data-category="python" data-name="Python for Data Science"
+            data-summary="Harness Python for data analysis, visualization, and machine learning." data-pdf="a/p3.pdf">
+            <a><img src="p/p3.png" class="python-image box-img"></a>
+        </div>
+        <div class="box" data-category="python" data-name="Web Development with Python"
+            data-summary="Learn to create dynamic and robust web applications using Python." data-pdf="a/python1.pdf">
+            <a><img src="p/python1.png" class="python-image box-img"></a>
+        </div>
+        <div class="box" data-category="bootstrap" data-name="Bootstrap for Beginners"
+            data-summary="A step-by-step guide to using Bootstrap for quick web page designs." data-pdf="a/b1.pdf">
+            <a><img src="p/b1.png" class="bootstrap-image box-img"></a>
+        </div>
+        <div class="box" data-category="bootstrap" data-name="Bootstrap Advanced"
+            data-summary="Master advanced Bootstrap components for sophisticated designs." data-pdf="a/b2.pdf"><a><img
+                    src="p/b2.png" class="bootstrap-image box-img"></a></div>
+        <div class="box" data-category="bootstrap" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh learning materials." data-pdf="a/b3.pdf">
+            <a><img src="p/b4.png" class="bootstrap-image box-img"></a>
+        </div>
+        <div class="box" data-category="bootstrap" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh learning materials." data-pdf="a/b4.pdf">
+            <a><img src="p/b4.png" class="bootstrap-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="Java Basics"
+            data-summary="Understand the fundamentals of Java programming to build robust applications."
+            data-pdf="java1.pdf"><a><img src="p/java1.png" class="java-image box-img"></a></div>
+        <div class="box" data-category=" js" data-name="Advanced Java"
+            data-summary="Explore advanced Java concepts to develop enterprise-level software." data-pdf="a/java2.pdf">
+            <a><img src="p/java2.png" class="java-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="Java Basics"
+            data-summary="Learn the fundamentals of Java to develop desktop and web applications."
+            data-pdf="a/csharp1.pdf">
+            <a><img src="p/jjj1.jpg" class="csharp-image box-img"></a>
+        </div>
+        <div class="box" data-category="csharp" data-name="Advanced C#"
+            data-summary="Master advanced C# features to create complex applications." data-pdf="a/csharp2.pdf"><a><img
+                    src="p/cc2.png" class="csharp-image box-img"></a></div>
+        <div class="box" data-category="ruby" data-name="Ruby for Beginners"
+            data-summary="Start coding with Ruby, an easy-to-learn, dynamic programming language."
+            data-pdf="a/ruby1.pdf">
+            <a><img src="p/r1.png" class="ruby-image box-img"></a>
+        </div>
+        <div class="box" data-category="ruby" data-name="Advanced Ruby"
+            data-summary="Dive deeper into Ruby to build sophisticated web applications." data-pdf="a/ruby2.pdf"><a><img
+                    src="p/r2.png" class="ruby-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Swift Basics"
+            data-summary="Learn the basics of Swift programming to create iOS apps." data-pdf="a/swift1.pdf"><a><img
+                    src="p/sw1.png" class="swift-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Advanced Swift"
+            data-summary="Master Swift and explore iOS app development with advanced features." data-pdf="a/swift2.pdf">
+            <a><img src="p/sw2.png" class="swift-image box-img"></a>
+        </div>
+        <div class="box" data-category="go" data-name="Go Programming Basics"
+            data-summary="Start with Go, an efficient and powerful language for building high-performance applications."
+            data-pdf="a/go1.pdf"><a><img src="p/g1.png" class="go-image box-img"></a></div>
+        <div class="box" data-category="go" data-name="Advanced Go"
+            data-summary="Take your Go skills to the next level for building scalable and concurrent applications."
+            data-pdf="a/go2.pdf"><a><img src="p/g2.png" class="go-image box-img"></a></div>
+        <div class="box" data-category="rust" data-name="Rust for Beginners"
+            data-summary="Learn Rust, a systems programming language focused on safety and performance."
+            data-pdf="a/rust1.pdf"><a><img src="p/rust1.png" class="rust-image box-img"></a></div>
+        <div class="box" data-category="rust" data-name="Advanced Rust"
+            data-summary="Explore advanced Rust topics to build highly concurrent and secure applications."
+            data-pdf="a/rust2.pdf"><a><img src="p/rust2.png" class="rust-image box-img"></a></div>
+        <div class="box" data-category="html" data-name="HTML5 & CSS3"
+            data-summary="Learn the new features of HTML5 and CSS3 to create modern websites."
+            data-pdf="a/html5css3.pdf">
+            <a><img src="p/html and css.png" class="html5css3-image box-img"></a>
+        </div>
+        <div class="box" data-category="ruby" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/ruby1.pdf"><a><img
+                    src="p/ruby4.png" class="ruby-image box-img"></a></div>
+        <div class="box" data-category="ruby" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/ruby2.pdf"><a><img
+                    src="p/b4.png" class="ruby-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/swift1.pdf"><a><img
+                    src="p/swift basic.png" class="swift-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/swift 2.pdf"><a><img
+                    src="p/advcend swift.png" class="swift-image box-img"></a></div>
+        <div class="box" data-category="go" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/go1.pdf"><a><img
+                    src="p/go programming basic.png" class="go-image box-img"></a></div>
+        <div class="box" data-category="go" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/go2.pdf"><a><img
+                    src="p/b4.png" class="go-image box-img"></a></div>
+        <div class="box" data-category="rust" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/rust1.pdf"><a><img
+                    src="p/b4.png" class="rust-image box-img"></a></div>
+        <div class="box" data-category="rust" data-name="Rust" data-summary="Exlpore about the rust"
+            data-pdf="a/rust2.pdf"><a><img src="p/rp1.png" class="rust-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="pwscraping.pdf"><a><img
+                    src="p/python for.png" class="python-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="mlpython.pdf"><a><img
+                    src="p/py1.png" class="python-image box-img"></a></div>
+        <div class="box" data-category="nodejs" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/nodejs1.pdf"><a><img
+                    src="p/n1.png" class="nodejs-image box-img"></a></div>
+        <div class="box" data-category="nodejs" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/nodejs2.pdf"><a><img
+                    src="p/n2.png" class="nodejs-image box-img"></a></div>
+        <div class="box" data-category="ruby" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/ruby2.pdf"><a><img
+                    src="p/b4.png" class="ruby-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/swift1.pdf"><a><img
+                    src="p/b4.png" class="swift-image box-img"></a></div>
+        <div class="box" data-category="php" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/php1.pdf"><a><img
+                    src="p/php.png" class="php-image box-img"></a></div>
+        <div class="box" data-category="php" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/php2.pdf"><a><img
+                    src="p/php2.png" class="php-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/python1.pdf"><a><img
+                    src="p/pyp1.png" class="python-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/python2.pdf"><a><img
+                    src="p/pyp2.png" class="python-image box-img"></a></div>
+        <div class="box" data-category="js" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/java1.pdf"><a><img
+                    src="p/ji2.png" class="java-image box-img"></a></div>
+        <div class="box" data-category="js" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/java2.pdf"><a><img
+                    src="p/jav2.jpg" class="java-image box-img"></a></div>
+        <div class="box" data-category="js" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/javascript1.pdf">
+            <a><img src="p/javs1.png" class="javascript-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/javascript2.pdf">
+            <a><img src="p/javs2.png" class="javascript-image box-img"></a>
+        </div>
+        <div class="box" data-category="csharp" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/csharp1.pdf"><a><img
+                    src="p/csharp.png" class="csharp-image box-img"></a></div>
+        <div class="box" data-category="csharp" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/csharp2.pdf"><a><img
+                    src="p/csharp1.png" class="csharp-image box-img"></a></div>
+        <div class="box" data-category="ruby" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/ruby1.pdf"><a><img
+                    src="p/ruby1.png" class="ruby-image box-img"></a></div>
+        <div class="box" data-category="ruby" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/ruby2.pdf"><a><img
+                    src="p/ruby2.png" class="ruby-image box-img"></a></div>
+        <div class="box" data-category="go" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/go1.pdf"><a><img
+                    src="p/b4.png" class="go-image box-img"></a></div>
+        <div class="box" data-category="go" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/go2.pdf"><a><img
+                    src="p/b4.png" class="go-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/swift1.pdf"><a><img
+                    src="p/b4.png" class="swift-image box-img"></a></div>
+        <div class="box" data-category="swift" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/swift2.pdf"><a><img
+                    src="p/b4.png" class="swift-image box-img"></a></div>
+        <div class="box" data-category="rust" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/rust1.pdf"><a><img
+                    src="p/b4.png" class="rust-image box-img"></a></div>
+        <div class="box" data-category="rust" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/rust2.pdf"><a><img
+                    src="p/rust pro.png" class="rust-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="pwscraping.pdf"><a><img
+                    src="p/ppp4.jpg" class="python-image box-img"></a></div>
+        <div class="box" data-category="python" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="mlpython.pdf"><a><img
+                    src="p/b4.png" class="python-image box-img"></a></div>
+        <div class="box" data-category="nodejs" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/nodejs1.pdf"><a><img
+                    src="p/n1.png" class="nodejs-image box-img"></a></div>
+        <div class="box" data-category="nodejs" data-name="Content Update"
+            data-summary="This book is updating. Check back soon for fresh content." data-pdf="a/nodejs2.pdf"><a><img
+                    src="p/n2.png" class="nodejs-image box-img"></a></div>
+        <div class="box" data-category="csharp" data-name="About c##"
+            data-summary="Discover the core concepts of c sharp, the foundation of web development."
+            data-pdf="a/html.pdf">
+            <a><img src="p/pp1.jpg" class="html-image box-img"></a>
+        </div>
+        <div class="box" data-category="js" data-name="JS Essentials"
+            data-summary="Master the key principles of JS to create visually appealing websites."
+            data-pdf="a/html1.pdf">
+            <a><img src="p/e1.jpg" class="html-image box-img"></a>
+        </div>
+        <div class="box" data-category="html" data-name="JavaScript Fundamentals"
+            data-summary="Dive into JavaScript to learn how to make web pages interactive." data-pdf="a/html2.pdf">
+            <a><img src="p/html2.png" class="html-image box-img"></a>
+        </div>
+        <div class="box" data-category="html" data-name="Bootstrap Guide"
+            data-summary="Learn how to use Bootstrap to build mobile-friendly, responsive websites."
+            data-pdf="a/html3.pdf"><a><img src="p/html3.png" class="html-image box-img"></a></div>
+        <div class="box" data-category="html" data-name="Learning HTML CSS"
+            data-summary="A beginner-friendly Html CSS guide covering syntax and practical use cases."
+            data-pdf="https://edusn-my.sharepoint.com/:b:/g/personal/eainsimoe_edusnschool_co_uk/EZygtSv8qlJEpSvmxPFu6S0Bs2vaxcQBszq7IAYc3T3DBw?e=Wbg666"><a><img src="p/html4.png" class="html-image box-img"></a></div>
+        <div class="box" data-category="css" data-name="CSS Basics"
+            data-summary="Start your journey into web design with foundational CSS concepts." data-pdf="a/css.pdf">
+            <a><img src="p/css.png" class="css-image box-img"></a>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <div class="no-results" id="noResults">
+        <i class="fas fa-frown"></i>
+        <p>Sorry, we couldn't find anything matching your search.</p>
+    </div>
+
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookModalLabel">Book Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="bookSummary"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-secondary" id="readButton">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="bg.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function searchFunction() {
+
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+
+            const boxes = document.querySelectorAll('.box');
+
+
+            const noResultsMessage = document.getElementById('noResults');
+
+            let found = false;
+
+
+            boxes.forEach(box => {
+
+                const name = box.getAttribute('data-name')?.toLowerCase() || '';
+
+
+                const isMatch = name.includes(query);
+
+
+                box.style.display = isMatch ? 'flex' : 'none';
+
+                if (isMatch) found = true;
+            });
+
+            if (found) {
+                noResultsMessage.style.display = 'none';
+            } else {
+                noResultsMessage.style.display = 'block';
+            }
+        }
+
+        function filterBoxes(category) {
+            const boxes = document.querySelectorAll('.box');
+            let found = false;
+
+            boxes.forEach(box => {
+                if (box.getAttribute('data-category') === category) {
+                    box.style.display = 'flex';
+                    found = true;
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+
+            const noResultsMessage = document.getElementById('noResults');
+            if (found) {
+                noResultsMessage.style.display = 'none';
+            } else {
+                noResultsMessage.style.display = 'block';
+            }
+        }
+
+        function showAll() {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                box.style.display = 'flex';
+            });
+
+            document.getElementById('noResults').style.display = 'none';
+        }
+        document.querySelectorAll('.box').forEach(box => {
+            box.addEventListener('click', function () {
+                const name = box.getAttribute('data-name');
+                const summary = box.getAttribute('data-summary');
+                const pdfLink = box.getAttribute('data-pdf');
+
+                document.getElementById('bookModalLabel').innerText = name;
+                document.getElementById('bookSummary').innerText = summary;
+                document.getElementById('readButton').onclick = function () {
+                    window.open(pdfLink, 'p1.pdf');
+                };
+                const modal = new bootstrap.Modal(document.getElementById('bookModal'));
+                modal.show();
+            });
+        });
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

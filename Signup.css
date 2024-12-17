@@ -1,0 +1,65 @@
+  body {
+    background-color: #dba8a8;
+    font-family: Arial, sans-serif;
+  }
+  
+ .signup-box{
+  width: 360px;
+  height: px;
+  margin: auto;
+  background-color: #f5dcdc;
+  border-radius: 5px;
+ }
+h2{
+  text-align: center;
+  padding-top: 15px;
+}
+ h1{
+  text-align: center;
+  padding-top: 15px;
+ }
+form{
+  width: 300px;
+  margin-left: 20px;
+}
+
+form label{
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+}
+form input{
+  width: 100%;
+  padding: 4px;
+  border: none;
+  border: 1px solid rgb(198, 155, 155);
+  border-radius: 6px;
+  outline: none;
+}
+.Sumbit-button {
+  width: 100%;
+  padding: 6px;
+  background-color: #d6731d; /* Bright green button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.Sumbit-button:hover {
+  background-color: #985a16;
+}
+p{
+  text-align: center;
+  padding-top: 20px;
+  font-size: 15px;
+}
+.para-2{
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-top: -40px;
+}
+.para-2{
+  color: rgb(112, 97, 99)
+}

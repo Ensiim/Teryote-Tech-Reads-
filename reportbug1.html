@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teryote - Bug Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/lux/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="Teryote__1_-removebg-preview.png" type="image/x-icon">
+    
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4efe6;
+            color: #4e4b47;
+        }
+
+        .navbar {
+            background-color: #4e3629;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-size: 18px;
+            margin-right: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffc107;
+            transform: translateY(-3px);
+        }
+
+        .navbar-nav .nav-item .dropdown-menu {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            position: absolute;
+            z-index: 9999;
+            color: #333;
+        }
+
+        .navbar-nav .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navbar-nav .nav-item .dropdown-item {
+            color: #333;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .dropdown-item:hover {
+            background-color: #ffc107;
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-item .dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .dropdown-menu a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav .dropdown-menu {
+                position: relative;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .offcanvas-header {
+            background-color: #4e3629;
+            color: #fff;
+        }
+
+        .offcanvas-body {
+            background-color: #f8f1e1;
+            padding: 0;
+        }
+
+        .offcanvas-nav {
+            padding: 10px 0;
+        }
+
+        .offcanvas-nav .nav-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .offcanvas-nav .nav-link {
+            color: #4e3629;
+            padding: 15px 20px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .offcanvas-nav .nav-link:hover {
+            background-color: #ffc107;
+            color: #ffffff;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4e3629;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            color: #4e3629;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #d1a171;
+        }
+
+        .submit-btn {
+            background-color: #8c4b36;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #60402d;
+            transform: scale(1.05);
+        }
+
+        .confirmation-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #f4efe6;
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+        .footer-distributed .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-distributed .row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .footer-left,
+        .footer-center,
+        .footer-right {
+            flex: 1;
+            margin: 10px;
+            min-width: 250px;
+        }
+
+        .footer-left h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #f7c045;
+        }
+
+        .footer-left p {
+            line-height: 1.6;
+            color: #000000da;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #f7c045;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+        }
+
+        .footer-center h4,
+        .footer-right h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #f7c045;
+        }
+
+        .footer-center p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .footer-center p i {
+            margin-right: 10px;
+            color: #f7c045;
+        }
+
+        .footer-right .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-right .footer-links ul li {
+            margin: 5px 0;
+        }
+
+        .footer-right .footer-links ul li a {
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-right .footer-links ul li a:hover {
+            color: #f7c045;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .footer-bottom i {
+            margin: 0 5px;
+        }
+
+        @media (max-width: 768px) {
+
+            .footer-left,
+            .footer-center,
+            .footer-right {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-form input,
+            .subscribe-form button {
+                width: 100%;
+                border-radius: 3px;
+                margin: 5px 0;
+            }
+        }
+
+        .navbar {
+            animation: fadeInBackground 2s ease-in-out;
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .navbar-nav .nav-item {
+            opacity: 0;
+            animation: fadeInDrop 1s ease forwards;
+        }
+
+        .navbar-nav .nav-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .navbar-nav .nav-item:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .navbar-nav .nav-item:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .navbar-nav .nav-item:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .navbar-brand img {
+            opacity: 0;
+            animation: dropLogo 0.5s ease forwards;
+            animation-delay: 0.7s;
+        }
+
+        @keyframes fadeInDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dropLogo {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+         @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .offcanvas.offcanvas-start {
+            animation: slideInLeft 0.5s ease forwards;
+        }
+
+        .offcanvas.offcanvas-start:not(.show) {
+            animation: slideOutLeft 0.5s ease forwards;
+        }
+
+        .navbar-toggler:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        .navbar-toggler {
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .offcanvas-title{
+            color: #ffffff;
+        }
+        body::-webkit-scrollbar {
+            display: none; 
+}
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="p/Teryote__1_-removebg-preview.png" alt="Teryote Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"
+                aria-controls="offcanvasNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contentDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-folder"></i> Content</a>
+                        <ul class="dropdown-menu" aria-labelledby="contentDropdown">
+                            <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report
+                                    Bug</a></li>
+                            <li><a class="dropdown-item" href="references 3.html"><i class="fas fa-info-circle"></i>
+                                        References</a></li>
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            </li>
+                            <li><a class="dropdown-item" href="signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html"><i class="fas fa-users"></i> About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="libery.html"><i class="fas fa-book"></i> Library</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavLabel">Teryote</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column offcanvas-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasContentDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-folder"></i> Content</a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasContentDropdown">
+                        <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report Bug</a>
+                        </li>
+                        <li><a class="dropdown-item" href="references 3.html"><i class="fas fa-info-circle"></i>
+                            References</a></li>
+                        <li><a class="dropdown-item" href="mobile.html"><i class="fas fa-ellipsis-h"></i> More</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html"><i class="fas fa-users"></i> About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="library.html"><i class="fas fa-book"></i> Library</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="form-container">
+        <h2><i class="fas fa-bug"></i> Bug Report Form</h2>
+        <form id="bug-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your name">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Your Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required
+                    placeholder="Enter your email">
+            </div>
+
+            <div class="mb-3">
+                <label for="bug-title" class="form-label">Bug Title:</label>
+                <input type="text" id="bug-title" name="bug-title" class="form-control" required
+                    placeholder="Brief bug title">
+            </div>
+
+            <div class="mb-3">
+                <label for="bug-description" class="form-label">Bug Description:</label>
+                <textarea id="bug-description" name="bug-description" class="form-control" rows="4" required
+                    placeholder="Describe the bug in detail"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Report</button>
+        </form>
+
+        <div id="confirmation-message" class="confirmation-message" style="display: none;">
+            <p>Thank you for your report! We will look into it as soon as possible.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const form = document.getElementById('bug-form');
+        const confirmationMessage = document.getElementById('confirmation-message');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            confirmationMessage.style.display = 'block';
+            form.reset();
+        });
+    </script>
+    <footer class="footer-distributed">
+        <div class="container">
+            <div class="row">
+                <div class="footer-left">
+                    <h3>Teryote</h3>
+                    <p>
+                        Unlock a world of learning with Teryote. Discover, connect, and grow with us every day.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61553644373259" class="icon facebook" aria-label="Visit our Facebook" title="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/home" class="icon twitter" aria-label="Visit our Twitter" title="Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jaffajds/" class="icon instagram" aria-label="Visit our Instagram" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/feed/" class="icon linkedin" aria-label="Visit our LinkedIn" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-center">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Myanmar </p>
+                    <p><i class="fas fa-phone-alt"></i> +95 9774171638</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@teryote.com">info@teryote.com</a></p>
+                </div>
+
+                <div class="footer-right">
+                    <h4>Useful Links</h4>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                            <li><a href="libery.html">Library</a></li>
+                            <li><a href="reportbug1.html">Report Bug</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"
+            style="background-color: #f4efe6; padding: 20px; text-align: center; font-size: 14px; color: #000; border-top: 1px solid #ccc;">
+            <p>© 2024 <strong>Teryote</strong>. All rights reserved.</p>
+            <p>
+                Content in this library is curated from various reputable sources.
+            </p>
+            <p>
+                <a href="aboutus.html" style="color: #6f4f28; text-decoration: none;">About Us</a> |
+                <a href="https://www.facebook.com/profile.php?id=61553644373259"
+                    style="color: #6f4f28; text-decoration: none;">Contact</a> |
+                <a href="team of services.html" style="color: #6f4f28; text-decoration: none;">Terms of Use</a>
+            </p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

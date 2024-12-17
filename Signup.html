@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="p/Teryote__1_-removebg-preview.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e8dbc0, #f7f4ef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #d4cbb3;
+            width: 900px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .login-form {
+            width: 50%;
+        }
+
+        .login-image {
+            width: 45%;
+            display: block;
+        }
+
+        .login-image img {
+            width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4e4b47;
+            font-weight: 600;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 40px;
+            border: 1px solid #d4cbb3;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #a89f91;
+            background-color: #f9f8f4;
+            box-shadow: 0 0 6px rgba(168, 159, 145, 0.5);
+            transform: scale(1.02);
+        }
+
+        .input-group .icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4e4b47;
+            font-size: 18px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        input[type="email"]:focus+.icon,
+        input[type="password"]:focus+.icon {
+            transform: translateY(-50%) scale(1.1);
+            color: #a89f91;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4e4b47;
+            font-size: 14px;
+        }
+
+        #error-message {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d9534f;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        #error-message.show {
+            opacity: 1;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .forgot-password {
+            color: #4e4b47;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #a89f91;
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #a55940;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button:hover {
+            background-color: #653625;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-button:active {
+            transform: scale(0.98);
+            box-shadow: none;
+        }
+
+        .spinner {
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #fff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: none;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .signup-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .signup-text a {
+            color: #4e4b47;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .signup-text a:hover {
+            color: #a89f91;
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4e4b47; /* Base brown color */
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px;
+        }
+
+        .social-button i {
+            margin-right: 10px;
+        }
+
+        .social-button.google {
+            background-color: #8c4b36;
+        }
+
+        .social-button.facebook {
+            background-color: #d1a171;
+        }
+
+        .social-button:hover {
+            background-color: 8c4b36;
+            transform: translateY(-3px);
+        }
+
+        .social-button.google:hover {
+            background-color: #d1a171;
+        }
+
+        .social-button.facebook:hover {
+            background-color: #8c4b36;
+        }
+
+        .icon {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .login-form {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .login-image {
+                display: none;
+            }
+        }
+        #email-error-message {
+            display: none; 
+            color: #d9534f;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-content">
+            <form class="login-form">
+                <h2>Sign-up</h2>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <i class="icon fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div id="email-error-message"><i class="fas fa-exclamation-circle"></i> Please include '@' and '.com' in your email.</div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <i class="icon fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div id="error-message"><i class="fas fa-exclamation-circle"></i> Password must be at least 6 characters long and contain at least one special character.</div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" name="remember-me">
+                        Remember me
+                    </label>
+                </div>
+                <button type="submit" class="login-button">
+                    <span>Sign up</span>
+                    <div class="spinner"></div>
+                </button>
+                <p class="signup-text">Do you have an account? <a href="login.html">Login</a></p>
+                <div class="social-login">
+                    <button class="social-button google"><i class="fab fa-google"></i> Sign-up with Google</button>
+                    <button class="social-button facebook"><i class="fab fa-facebook"></i> Sign-up with Facebook</button>
+                </div>
+            </form>
+            <div class="login-image">
+                <img src="p/a1.png" alt="Login Image">
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.getElementById('password');
+            const emailInput = document.getElementById('email');
+            const loginButton = document.querySelector('.login-button');
+            const errorMessage = document.getElementById('error-message');
+            const emailErrorMessage = document.getElementById('email-error-message');
+            const spinner = document.querySelector('.spinner');
+            const buttonText = loginButton.querySelector('span');
+
+            function validatePassword(password) {
+                const minLength = 6;
+                const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/g;
+                if (password.length >= minLength && specialCharPattern.test(password)) {
+                    errorMessage.classList.remove('show');
+                    return true;
+                }
+                errorMessage.classList.add('show');
+                return false;
+            }
+
+            function validateEmail(email) {
+                if (email.includes('@') && email.includes('.com')) {
+                    emailErrorMessage.style.display = 'none'; // Hide error message
+                    return true;
+                }
+                emailErrorMessage.style.display = 'block'; // Show error message
+                return false;
+            }
+
+            emailInput.addEventListener('input', () => {
+                validateEmail(emailInput.value);
+            });
+
+            passwordInput.addEventListener('input', () => {
+                if (validatePassword(passwordInput.value)) {
+                    loginButton.disabled = false;
+                } else {
+                    loginButton.disabled = true;
+                }
+            });
+
+            loginButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isPasswordValid = validatePassword(passwordInput.value);
+                const isEmailValid = validateEmail(emailInput.value);
+                if (isPasswordValid && isEmailValid) {
+                    buttonText.style.display = 'none';
+                    spinner.style.display = 'inline-block';
+                    setTimeout(() => window.location.href = "index.html", 2000);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

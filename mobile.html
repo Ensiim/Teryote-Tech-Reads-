@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library  for mobile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="p/Teryote__1_-removebg-preview.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5DC;
+            color: #4e4b47;
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn-brown {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-brown:hover {
+            background-color: #6A2E1A;
+        }
+
+    
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('p/libery.jpg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
+            padding: 0 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            position: absolute;
+            width: 100%;
+            color: #ffffff;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            top: 30%;
+        }
+
+        .button {
+            padding: 10px 40px;
+            font-size: 20px;
+            background: linear-gradient(135deg, #8c4b36, #b56443);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 70px;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .button:hover {
+            background: linear-gradient(135deg, #937a6b, #8c4b36);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            width: 100%;
+            height: 320px;
+            margin: 0 auto;
+        }
+
+        .card {
+            min-width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-container::-webkit-scrollbar {
+            width: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                position: relative;
+                top: 0;
+                font-size: 1.8em;
+                text-align: center;
+            }
+
+            .button {
+                padding: 8px 30px;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+
+            .card {
+                min-width: 150px;
+                height: 250px;
+            }
+
+            .card img {
+                width: 100%;
+                height: 150px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+
+            .card-author {
+                font-size: 12px;
+            }
+        }
+        .navbar {
+            background-color: #4e3629;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-size: 18px;
+            margin-right: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffc107;
+            transform: translateY(-3px);
+        }
+
+        .navbar-nav .nav-item .dropdown-menu {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            position: absolute;
+            z-index: 9999;
+            color: #333;
+        }
+
+        .navbar-nav .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navbar-nav .nav-item .dropdown-item {
+            color: #333;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .dropdown-item:hover {
+            background-color: #ffc107;
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-item .dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .dropdown-menu a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav .dropdown-menu {
+                position: relative;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .offcanvas-header {
+            background-color: #4e3629;
+            color: #fff;
+        }
+
+        .offcanvas-body {
+            background-color: #f8f1e1;
+            padding: 0;
+        }
+
+        .offcanvas-nav {
+            padding: 10px 0;
+        }
+
+        .offcanvas-nav .nav-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .offcanvas-nav .nav-link {
+            color: #4e3629;
+            padding: 15px 20px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .offcanvas-nav .nav-link:hover {
+            background-color: #ffc107;
+            color: #ffffff;
+        }
+
+        .navbar {
+            animation: fadeInBackground 2s ease-in-out;
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .navbar-nav .nav-item {
+            opacity: 0;
+            animation: fadeInDrop 1s ease forwards;
+        }
+
+        .navbar-nav .nav-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .navbar-nav .nav-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .navbar-nav .nav-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .navbar-nav .nav-item:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .navbar-brand img {
+            opacity: 0;
+            animation: dropLogo 1s ease forwards;
+            animation-delay: 0.7s;
+        }
+
+        @keyframes fadeInDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dropLogo {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .offcanvas.offcanvas-start {
+            animation: slideInLeft 0.5s ease forwards;
+        }
+
+        .offcanvas.offcanvas-start:not(.show) {
+            animation: slideOutLeft 0.5s ease forwards;
+        }
+        .navbar-toggler {
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .offcanvas-title{
+            color: #ffffff;
+        }
+        body::-webkit-scrollbar {
+            display: none; 
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark animated-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand logo animated-logo" href="#">
+                <img src="p/Teryote__1_-removebg-preview.png" alt="Teryote Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"
+                aria-controls="offcanvasNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto animated-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contentDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-folder"></i> Content</a>
+                        <ul class="dropdown-menu" aria-labelledby="contentDropdown">
+                            <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report
+                                    Bug</a></li>
+                            <li><a class="dropdown-item" href="references 3.html"><i class="fas fa-info-circle"></i>
+                                        References</a></li>>
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            </li>
+                            <li><a class="dropdown-item" href="Signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-users"></i> About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="libery.html"><i class="fas fa-book"></i> Library</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavLabel">Teryote</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column offcanvas-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasContentDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-folder"></i> Content</a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasContentDropdown">
+                        <li><a class="dropdown-item" href="reportbug1.html"><i class="fas fa-bug"></i> Report Bug</a>
+                        </li>
+                        <li><a class="dropdown-item" href="references 3.html"><i class="fas fa-info-circle"></i>
+                            References</a></li>
+                        <li><a class="dropdown-item" href="more.html"><i class="fas fa-ellipsis-h"></i> More</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html"><i class="fas fa-users"></i> About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="libery.html"><i class="fas fa-book"></i> Library</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="container" style="margin-bottom: 50px;">
+        <h1>Library</h1>
+        <a href="index.html"><button class="button">Home</button></a>
+    </div>
+    
+
+    <div class="card-container">
+        <div class="card" data-name="Web Development" data-category="html"
+            data-summary="Learn the fundamentals of web development, including HTML, CSS, and JavaScript.">
+            <img class="card-img" src="p/web devlopment.png" alt="Web Development">
+            <h2 class="card-title">Web Development</h2>
+        </div>
+        <div class="card" data-name="Web Programming" data-category="css"
+            data-summary="Explore the world of web programming, focusing on backend and frontend development.">
+            <img class="card-img" src="p/web progtamming.png" alt="Web Programming">
+            <h2 class="card-title">Web Programming</h2>
+        </div>
+        <div class="card" data-name="Swift Basics" data-category=""
+            data-summary="Get started with the basics of the Swift programming language and build simple iOS apps.">
+            <img class="card-img" src="p/sw1.png" alt="Swift Basics">
+            <h2 class="card-title">Swift Basics</h2>
+        </div>
+        <div class="card" data-name="Comming soon" data-category="Upcoming"
+            data-summary="New content on Swift basics and advanced topics is coming soon.">
+            <img class="card-img" src="p/b4.png" alt="Swift Basic">
+            <h2 class="card-title">Comming soon</h2>
+        </div>
+        <div class="card" data-name="Swift Tools" data-category="swift"
+            data-summary="Learn about essential tools and libraries for Swift development.">
+            <img class="card-img" src="p/t1.png" alt="T1">
+            <h2 class="card-title">Swift Tools</h2>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card" data-name="Swift Techniques" data-category="swift"
+            data-summary="Master advanced Swift programming techniques for professional app development.">
+            <img class="card-img" src="p/t2.png" alt="T2">
+            <h2 class="card-title">Swift Techniques</h2>
+        </div>
+        <div class="card" data-name="Rust Intermediate" data-category="rust"
+            data-summary="Deepen your understanding of Rust with intermediate concepts and practical projects.">
+            <img class="card-img" src="p/rust2.png" alt="Rust Intermediate">
+            <h2 class="card-title">Rust Intermediate</h2>
+        </div>
+        <div class="card" data-name="Ruby Basics" data-category="ruby"
+            data-summary="Learn the fundamentals of Ruby programming and build your first Ruby applications.">
+            <img class="card-img" src="p/ruby1.png" alt="Ruby Basics">
+            <h2 class="card-title">Ruby Basics</h2>
+        </div>
+        <div class="card" data-name="Ruby Intermediate" data-category="ruby"
+            data-summary="Advance your skills in Ruby by exploring intermediate-level projects and concepts.">
+            <img class="card-img" src="p/ruby2.png" alt="Ruby Intermediate">
+            <h2 class="card-title">Ruby Intermediate</h2>
+        </div>
+        <div class="card" data-name="Ruby Advanced" data-category="ruby"
+            data-summary="Gain expertise in Ruby with advanced programming techniques and best practices.">
+            <img class="card-img" src="p/ruby4.png" alt="Ruby Advanced">
+            <h2 class="card-title">Ruby Advanced</h2>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card" data-name="Rust Professional" data-category="rust"
+            data-summary="Achieve professional-level proficiency in Rust with complex projects and advanced concepts.">
+            <img class="card-img" src="p/rust pro.png" alt="Rust Pro">
+            <h2 class="card-title">Rust Professional</h2>
+        </div>
+        <div class="card" data-name="Rust Basics" data-category="rust"
+            data-summary="Learn the basics of Rust and start building your first applications.">
+            <img class="card-img" src="p/rust1.png" alt="Rust Basics">
+            <h2 class="card-title">Rust Basics</h2>
+        </div>
+        <div class="card" data-name="Ruby Intro" data-category="ruby"
+            data-summary="Introduction to Ruby, including syntax and basic programming constructs.">
+            <img class="card-img" src="p/r1.png" alt="Ruby Intro">
+            <h2 class="card-title">Ruby Intro</h2>
+            <p class="card-author">Author 13</p>
+        </div>
+        <div class="card" data-name="Ruby Techniques" data-category="ruby"
+            data-summary="Explore advanced Ruby techniques to optimize your code and create robust applications.">
+            <img class="card-img" src="p/r2.png" alt="Ruby Techniques">
+            <h2 class="card-title">Ruby Techniques</h2>
+            <p class="card-author">Author 14</p>
+        </div>
+        <div class="card" data-name="Ruby Concepts" data-category="ruby"
+            data-summary="Understand core Ruby programming concepts and principles to enhance your coding skills.">
+            <img class="card-img" src="p/r3.png" alt="Ruby Concepts">
+            <h2 class="card-title">Ruby Concepts</h2>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card" data-name="Ruby Pro" data-category="Programming"
+            data-summary="Become a Ruby expert by tackling professional-level projects and mastering advanced concepts.">
+            <img class="card-img" src="p/rp1.png" alt="Ruby Pro">
+            <h2 class="card-title">Ruby Pro</h2>
+        </div>
+        <div class="card" data-name="Python Basics" data-category="Programming"
+            data-summary="Learn the fundamental concepts of Python and create simple programs.">
+            <img class="card-img" src="p/py1.png" alt="Python Basics">
+            <h2 class="card-title">Python Basics</h2>
+        </div>
+        <div class="card" data-name="Python Pro" data-category="Programming"
+            data-summary="Advance your Python skills to a professional level with complex projects and practices.">
+            <img class="card-img" src="p/pyp1.png" alt="Python Pro">
+            <h2 class="card-title">Python Pro</h2>
+        </div>
+    </div>
+    
+    
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookModalLabel">Book Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="bookSummary"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-secondary" id="readButton">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function filterBoxes(category) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (card.getAttribute('data-category') === category || category === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function showAll() {
+            const boxes = document.querySelectorAll('.card');
+            boxes.forEach(box => {
+                box.style.display = 'block';
+            });
+        }
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function () {
+                const name = card.getAttribute('data-name');
+                const summary = card.getAttribute('data-summary');
+                const pdfLink = card.getAttribute('data-pdf');
+
+                document.getElementById('bookModalLabel').innerText = name;
+                document.getElementById('bookSummary').innerText = summary;
+                document.getElementById('readButton').onclick = function () {
+                };
+
+                const modal = new bootstrap.Modal(document.getElementById('bookModal'));
+                modal.show();
+            });
+        });
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
